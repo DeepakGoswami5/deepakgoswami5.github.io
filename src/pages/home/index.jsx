@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAME, TABS, HOME_DESIGNATION_DATA } from '../../constant/data'
 import SocialMediaIcon from '../../components/socialMediaIcon'
+import AnimatedBg from '../../components/animatedBg/animatedBg';
 import About from '../about'
 import Resume from '../resume'
 import Contact from '../contact'
@@ -90,12 +91,13 @@ const Home = () => {
             {/* Hero */}
             <motion.div
                 id="home"
-                className="flex h-screen items-center pt-32 px-4 sm:px-10 bg-black"
+                className="relative flex h-screen items-center pt-32 px-4 sm:px-10 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] overflow-hidden"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <div className="ml-2 sm:ml-8 md:ml-20 lg:ml-40">
+                <AnimatedBg />
+                <div className="ml-2 sm:ml-8 md:ml-20 lg:ml-40 z-10">
                     <motion.div className="text-2xl md:text-5xl text-white font-bold mb-4">
                         {NAME}
                     </motion.div>
@@ -107,19 +109,29 @@ const Home = () => {
             </motion.div>
 
             {/* About */}
-            <section id="about" className="min-h-screen px-4 py-16 sm:px-8 sm:py-20 bg-zinc-900 text-white">
+            <section
+                id="about"
+                className="border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
+            >
                 <About />
             </section>
 
             {/* Resume */}
-            <section id="work" className="min-h-screen px-4 py-16 sm:px-8 sm:py-20 bg-zinc-800 text-white">
+            <section
+                id="work"
+                className="border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
+            >
                 <Resume />
             </section>
 
             {/* Contact */}
-            <section id="contact" className="min-h-screen px-4 py-16 sm:px-8 sm:py-20 bg-zinc-700 text-white">
+            <section
+                id="contact"
+                className="border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
+            >
                 <Contact />
             </section>
+
 
         </>
     )

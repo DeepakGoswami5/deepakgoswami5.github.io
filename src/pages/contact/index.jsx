@@ -23,7 +23,7 @@ const Contact = () => {
             });
     };
     return (
-        <div className="bg-black md:bg-blend-darken max-w-screen-xl md:mx-auto p-4 mt-5">
+        <div className="md:bg-blend-darken max-w-screen-xl md:mx-auto p-4 mt-5">
             <PageHeader
                 data={CONTACT_PAGE}
             />

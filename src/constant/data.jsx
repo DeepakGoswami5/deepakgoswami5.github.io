@@ -5,7 +5,7 @@ export const NAME = "Deepak Goswami"
 export const DESCRIPTION = "I'm a passionate Software Developer from Bengaluru"
 export const HOME_DESIGNATION_DATA = "Software Developer"
 export const DESIGNATION = "Software Developer"
-export const ABOUT_SUMMARY = "Highly skilled and motivated Frontend Engineer with three years of hands-on experience in building robust and scalable web applications using cutting-edge technologies. Proficient in ReactJS, Redux, Next.js, JavaScript, HTML, CSS, and Tailwind CSS, with a strong focus on creating seamless user experiences and responsive user interfaces. Demonstrated expertise in data structures and algorithms, enabling efficient problem-solving and optimizing application performance. Adept at collaborating with cross-functional teams to deliver high-quality software solutions. With a passion for staying up-to-date with industry trends and best practices, I am dedicated to continuously improving and enhancing the development process."
+export const ABOUT_SUMMARY = "Experienced Frontend Engineer with 4+ years of proven expertise in building scalable, performant, and user-friendly web applications. Specialized in React.js, TypeScript, Redux, Next.js, and modern UI libraries, I’ve successfully delivered products across CRM, content platforms, and marketing automation systems. I have a strong foundation in data structures and algorithms, and a passion for clean code, performance optimization, and collaborative problem-solving. I'm continuously learning and contributing to impactful digital experiences."
 
 // Tab list for menu + routing
 export const TABS = [
@@ -54,15 +54,15 @@ export const CONTACT_PAGE = {
     description: "CONTACT ME"
 }
 export const SKILLS = [
-    { name: "React.js", level: 80, icon: FaReact },
-    { name: "Next.js", level: 75, icon: SiNextdotjs },
-    { name: "Redux.js", level: 70, icon: SiRedux },
-    { name: "JavaScript", level: 85, icon: FaJs },
-    { name: "HTML", level: 90, icon: FaHtml5 },
-    { name: "CSS", level: 80, icon: FaCss3Alt },
-    { name: "Python", level: 75, icon: FaPython },
-    { name: "Git", level: 65, icon: FaGitAlt },
-];
+    { name: "React.js", level: 90, icon: FaReact },
+    { name: "Next.js", level: 85, icon: SiNextdotjs },
+    { name: "Redux.js", level: 80, icon: SiRedux },
+    { name: "JavaScript", level: 95, icon: FaJs },
+    { name: "HTML", level: 95, icon: FaHtml5 },
+    { name: "CSS", level: 90, icon: FaCss3Alt },
+    { name: "Python", level: 60, icon: FaPython }, // Optional, if relevant in role
+    { name: "Git", level: 80, icon: FaGitAlt },
+  ];
 export const INTERESTS = ["PAINTING", "COOKING"]
 export const CAROUSEL = [
     {
@@ -83,41 +83,41 @@ export const EDUCATION = [
 
 export const EXPERIENCE = [
     {
-        title: "SDE-I",
-        id: "1",
-        subTitle: 'Brick&Bolt',
-        duration: 'Jun 2021 - Present',
-        description: "Bengaluru, Karnataka, India",
-        achievement: [
-            "Worked and maintainer of customer relationship management, analytics, feedback, design, content management portal built-in React.js.",
-            "Worked with design, product, and back-end teams on 20+ dashboards to create multiple web features.",
-            "Contributed features to BrickBolt public-facing website and fixed bugs overnight during Hyderabad and Chennai office launches.",
-            "Built 20+ landing pages and reusable email templates to support marketing campaigns and promotions."
-        ]
+      title: "Software Development Engineer - I",
+      id: "1",
+      subTitle: 'Brick&Bolt',
+      duration: 'Jun 2021 - Present',
+      description: "Bengaluru, Karnataka, India",
+      achievement: [
+        "Maintained and enhanced the CRM, analytics, feedback, and content management platforms using React.js.",
+        "Collaborated cross-functionally with design, product, and backend teams to deliver 20+ feature-rich dashboards.",
+        "Led frontend contributions for public-facing portals during Hyderabad and Chennai office launches, resolving critical bugs overnight.",
+        "Developed 20+ landing pages and reusable email templates to support high-conversion marketing campaigns."
+      ]
     },
     {
-        title: "Programmer Analyst Trainee",
-        id: "2",
-        subTitle: 'Quantum Phinance',
-        duration: 'Aug 2020 - May 2021',
-        description: "Mumbai, Maharashtra, India",
-        achievement: [
-            " Developed features for loan management system for NBFC for loan calculations, compliance, and reporting.",
-        ]
+      title: "Programmer Analyst Trainee",
+      id: "2",
+      subTitle: 'Quantum Phinance',
+      duration: 'Aug 2020 - May 2021',
+      description: "Mumbai, Maharashtra, India",
+      achievement: [
+        "Built core modules for NBFC loan management system including EMI calculation, compliance, and reporting automation.",
+      ]
     },
     {
-        title: "Software Engineer Intern",
-        id: "3",
-        subTitle: 'JamaWealth.com',
-        duration: 'Jan 2020 - Jul 2020',
-        description: "Hyderabad, Telangana, India",
-        achievement: [
-            "Redesigned wealth management and financial planning manager platform.",
-            "Built 50+ responsive screens using bootstrap framework"
-        ]
+      title: "Frontend Developer Intern",
+      id: "3",
+      subTitle: 'JamaWealth.com',
+      duration: 'Jan 2020 - Jul 2020',
+      description: "Hyderabad, Telangana, India",
+      achievement: [
+        "Revamped UI/UX for the wealth management dashboard, significantly improving user engagement.",
+        "Developed over 50+ responsive screens using Bootstrap and JavaScript."
+      ]
     },
-]
-
+  ]
+  
 export const CONTACT_ME = [
     {
         title: "My Address",

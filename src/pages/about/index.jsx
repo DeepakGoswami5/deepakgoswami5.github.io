@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="bg-black max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12">
+    <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12">
       <PageHeader data={ABOUT_PAGE} />
 
       {/* Summary Section */}
@@ -31,7 +31,7 @@ const About = () => {
       {/* Skills Section */}
       <div className="mt-10">
         <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
-          SKILLS
+          What I am good at
           <div className="w-16 sm:w-20 h-1 bg-green-500 mt-1" />
         </h3>
 
