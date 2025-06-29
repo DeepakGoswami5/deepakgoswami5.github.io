@@ -1,30 +1,20 @@
+import { FaReact, FaHtml5, FaCss3Alt, FaJs, FaPython, FaGitAlt } from 'react-icons/fa';
+import { SiNextdotjs, SiRedux } from 'react-icons/si';
+
 export const NAME = "Deepak Goswami"
 export const DESCRIPTION = "I'm a passionate Software Developer from Bengaluru"
 export const HOME_DESIGNATION_DATA = "Software Developer"
 export const DESIGNATION = "Software Developer"
 export const ABOUT_SUMMARY = "Highly skilled and motivated Frontend Engineer with three years of hands-on experience in building robust and scalable web applications using cutting-edge technologies. Proficient in ReactJS, Redux, Next.js, JavaScript, HTML, CSS, and Tailwind CSS, with a strong focus on creating seamless user experiences and responsive user interfaces. Demonstrated expertise in data structures and algorithms, enabling efficient problem-solving and optimizing application performance. Adept at collaborating with cross-functional teams to deliver high-quality software solutions. With a passion for staying up-to-date with industry trends and best practices, I am dedicated to continuously improving and enhancing the development process."
+
+// Tab list for menu + routing
 export const TABS = [
-    {
-        title: "Home",
-        id: "/home"
-    },
-    {
-        title: "About",
-        id: "/about"
-    },
-    {
-        title: "Resume",
-        id: "/resume"
-    },
-    // {
-    //     title: "Projects",
-    //     id: "/projects"
-    // },
-    {
-        title: "Contact",
-        id: "/contact"
-    }
-]
+    { title: "Home", id: "home" },
+    { title: "About", id: "about" },
+    { title: "Work Experience", id: "work" },
+    { title: "Contact", id: "contact" },
+];
+
 export const SOCIAL_MEDIA = [
     // {
     //     id: "twitters",
@@ -52,8 +42,8 @@ export const ABOUT_PAGE = {
     description: "LEARN MORE ABOUT ME"
 }
 export const RESUME_PAGE = {
-    title: 'RESUME',
-    description: "CHECK MY RESUME"
+    title: 'Work Experience',
+    description: "What I have done so far"
 }
 export const PROJECTS_PAGE = {
     title: 'PROJECTS',
@@ -64,42 +54,15 @@ export const CONTACT_PAGE = {
     description: "CONTACT ME"
 }
 export const SKILLS = [
-    {
-        title: "React.js",
-        id: "react_js",
-        rating: '70%'
-    },
-    {
-        title: "Next.js",
-        id: "next_js",
-        rating: '70%'
-    },
-    {
-        title: "Redux.js",
-        id: "redux_js",
-        rating: '70%'
-    },
-    {
-        title: "JavaScripts",
-        id: "java_scripts",
-        rating: '80%'
-    },
-    {
-        title: "Python",
-        id: "python",
-        rating: '70%'
-    },
-    {
-        title: "HTML",
-        id: "html",
-        rating: '80%'
-    },
-    {
-        title: "CSS",
-        id: "css",
-        rating: '70%'
-    }
-]
+    { name: "React.js", level: 80, icon: FaReact },
+    { name: "Next.js", level: 75, icon: SiNextdotjs },
+    { name: "Redux.js", level: 70, icon: SiRedux },
+    { name: "JavaScript", level: 85, icon: FaJs },
+    { name: "HTML", level: 90, icon: FaHtml5 },
+    { name: "CSS", level: 80, icon: FaCss3Alt },
+    { name: "Python", level: 75, icon: FaPython },
+    { name: "Git", level: 65, icon: FaGitAlt },
+];
 export const INTERESTS = ["PAINTING", "COOKING"]
 export const CAROUSEL = [
     {
@@ -123,7 +86,7 @@ export const EXPERIENCE = [
         title: "SDE-I",
         id: "1",
         subTitle: 'Brick&Bolt',
-        duration:'Jun 2021 - Present',
+        duration: 'Jun 2021 - Present',
         description: "Bengaluru, Karnataka, India",
         achievement: [
             "Worked and maintainer of customer relationship management, analytics, feedback, design, content management portal built-in React.js.",
@@ -136,7 +99,7 @@ export const EXPERIENCE = [
         title: "Programmer Analyst Trainee",
         id: "2",
         subTitle: 'Quantum Phinance',
-        duration:'Aug 2020 - May 2021',
+        duration: 'Aug 2020 - May 2021',
         description: "Mumbai, Maharashtra, India",
         achievement: [
             " Developed features for loan management system for NBFC for loan calculations, compliance, and reporting.",
@@ -146,7 +109,7 @@ export const EXPERIENCE = [
         title: "Software Engineer Intern",
         id: "3",
         subTitle: 'JamaWealth.com',
-        duration:'Jan 2020 - Jul 2020',
+        duration: 'Jan 2020 - Jul 2020',
         description: "Hyderabad, Telangana, India",
         achievement: [
             "Redesigned wealth management and financial planning manager platform.",

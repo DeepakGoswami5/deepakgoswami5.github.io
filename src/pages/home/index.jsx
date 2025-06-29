@@ -1,82 +1,128 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
-import { NAME, TABS, HOME_DESIGNATION_DATA } from "../../constant/data"
-import SocialMediaIcon from '../../components/socialMediaIcon/index.jsx'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { NAME, TABS, HOME_DESIGNATION_DATA } from '../../constant/data'
+import SocialMediaIcon from '../../components/socialMediaIcon'
+import About from '../about'
+import Resume from '../resume'
+import Contact from '../contact'
 import '../../App.css'
+
 const Home = () => {
-    const [currentTab, setCurrentTab] = useState("/home")
+    const [currentTab, setCurrentTab] = useState("home")
     const [isNavBar, setIsNavBar] = useState(false)
-    const handleTabChange = (e) => {
-        setCurrentTab(e)
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768)
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    const handleTabChange = (tabId) => {
+        setCurrentTab(tabId)
+        setIsNavBar(false)
+
+        // Smooth scroll to section
+        const section = document.getElementById(tabId)
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' })
+        }
     }
-    const handleNavabar = () => {
-        setIsNavBar(!isNavBar)
-    }
+
+    const handleNavbarToggle = () => setIsNavBar(!isNavBar)
+
     return (
         <>
-            <nav className="border-black-200 dark:bg-black-900">
+            {/* Navbar */}
+            <nav className="border-black-200 dark:bg-black-900 z-10 fixed top-0 left-0 w-full bg-black">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a className="flex items-center">
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-                    </a>
+
+                    {/* Logo */}
+                    <div className="flex items-center">
+                        <span className="text-2xl font-semibold text-white whitespace-nowrap">{NAME}</span>
+                    </div>
+
+                    {/* Hamburger Button */}
                     <button
-                        onClick={handleNavabar}
+                        onClick={handleNavbarToggle}
                         className="text-white inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden"
+                        aria-label="Toggle navigation"
                     >
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
                         </svg>
                     </button>
-                    {isNavBar && (
-                        <div className={`w-full md:block md:w-auto ${!isNavBar ? `hidden` : null}`} id="navbar-default">
-                            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-black-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-black-800 md:dark:bg-black-900 dark:border-black-700">
-                                {TABS.map((item, ind) => (
-                                    <li key={item.id + ind}>
-                                        <Link to={item.id}>
+
+                    {/* Nav Links */}
+                    <AnimatePresence>
+                        {(isNavBar || !isMobile) && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="w-full md:block md:w-auto"
+                                id="navbar-default"
+                            >
+                                <ul className="font-medium flex flex-col md:flex-row md:space-x-8 p-4 mt-4 md:mt-0 border border-black-100 rounded-lg md:border-0 dark:bg-black-800 md:dark:bg-black-900 dark:border-black-700">
+                                    {TABS.map((item) => (
+                                        <li key={item.id}>
                                             <p
                                                 onClick={() => handleTabChange(item.id)}
-                                                className={`block py-2 pl-3 pr-4 text-grey text-xl hover:text-green-600 rounded md:bg-transparent md:text-black-700 md:p-0 dark:text-white md:dark:text-black-500 ${currentTab == item.id ? `underline underline-offset-8 decoration-4 decoration-green-700` : ''}`}
-                                                aria-current="page"
+                                                className={`cursor-pointer py-2 pl-3 pr-4 text-white text-xl hover:text-green-600 md:bg-transparent md:p-0 ${currentTab === item.id
+                                                    ? 'underline underline-offset-8 decoration-4 decoration-green-700'
+                                                    : ''
+                                                    }`}
                                             >
                                                 {item.title}
                                             </p>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </nav>
-            <div className="flex h-screen items-center p-10">
-                <div className='lg:ml-40 md:ml-40 sm:ml-1'>
-                    <div className="text-2xl md:text-5xl text-white	font-bold p-2">{NAME}</div>
-                    <div className="text-1xl md:text-3xl text-white p-2 text-slate-400">
+
+            {/* Hero */}
+            <motion.div
+                id="home"
+                className="flex h-screen items-center pt-32 px-4 sm:px-10 bg-black"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                <div className="ml-2 sm:ml-8 md:ml-20 lg:ml-40">
+                    <motion.div className="text-2xl md:text-5xl text-white font-bold mb-4">
+                        {NAME}
+                    </motion.div>
+                    <motion.div className="text-lg md:text-3xl text-slate-400 mb-4">
                         I'm a passionate <span className="underline decoration-4 underline-offset-8 decoration-green-700">{HOME_DESIGNATION_DATA}</span> from India
-                    </div>
-                    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pl-2 p-4">
-                        <div className="w-full md:block md:w-auto hidden" id="navbar-default">
-                            <ul className="font-medium flex flex-col border border-black-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-black-800 md:dark:bg-black-900 dark:border-black-700">
-                                {TABS.map((item, ind) => (
-                                    <li key={item.id + ind}>
-                                        <Link to={item.id}>
-                                            <p
-                                                onClick={() => handleTabChange(item.id)}
-                                                className={`block py-2 pl-3 pr-4 text-grey text-xl hover:text-green-600 rounded md:bg-transparent md:text-black-700 md:p-0 dark:text-white md:dark:text-black-500 ${currentTab == item.id ? `underline underline-offset-8 decoration-4  decoration-green-700` : ''}`}
-                                                aria-current="page"
-                                            >
-                                                {item.title}
-                                            </p>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
+                    </motion.div>
                     <SocialMediaIcon />
                 </div>
-            </div>
+            </motion.div>
+
+            {/* About */}
+            <section id="about" className="min-h-screen px-4 py-16 sm:px-8 sm:py-20 bg-zinc-900 text-white">
+                <About />
+            </section>
+
+            {/* Resume */}
+            <section id="work" className="min-h-screen px-4 py-16 sm:px-8 sm:py-20 bg-zinc-800 text-white">
+                <Resume />
+            </section>
+
+            {/* Contact */}
+            <section id="contact" className="min-h-screen px-4 py-16 sm:px-8 sm:py-20 bg-zinc-700 text-white">
+                <Contact />
+            </section>
+
         </>
     )
 }
+
 export default Home

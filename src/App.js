@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
-import AppRouter from './router';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <HashRouter>
-    <AppRouter />
-  </HashRouter>
-);
+import Home from './pages/home/index'
+
+function App() {
+  return (
+    <div className="bg-black">
+      <Home />
+    </div>
+  )
+}
+
+export default App
