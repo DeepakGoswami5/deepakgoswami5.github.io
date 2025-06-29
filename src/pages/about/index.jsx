@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12">
+    <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <PageHeader data={ABOUT_PAGE} />
 
       {/* Summary Section */}

@@ -83,40 +83,56 @@ export const EDUCATION = [
 
 export const EXPERIENCE = [
     {
+      title: "Senior Software Engineer",
+      id: "4",
+      subTitle: "Zed Mobility - Al Ghurair Investment",
+      duration: "Sept 2023 – Present",
+      description: "UAE (Remote)",
+      achievement: [
+        "Spearheaded the end-to-end development of an internal Admin Portal to monitor and optimize 8,000+ rides across Dubai with real-time analytics and operational insights.",
+        "Built and maintained a Supplier Portal enabling vendors to manage drivers, vehicles, and ride data—streamlining fleet coordination and visibility.",
+        "Engineered a scalable Bulk Upload Feature using Node.js and AWS Lambda, processing thousands of users and GBs of documents, improving efficiency by 40% and reducing costs by 30%.",
+        "Developed advanced data visualizations using Deck.gl, Leaflet, and Google Maps to deliver interactive heatmaps, traffic overlays, and ride analytics.",
+        "Enhanced system reliability with UI-level fail-safes, fallback messages, error boundaries, and structured logging for faster issue resolution."
+      ]
+    },
+    {
       title: "Software Development Engineer - I",
       id: "1",
-      subTitle: 'Brick&Bolt',
-      duration: 'Jun 2021 - Present',
+      subTitle: "Brick&Bolt",
+      duration: "Jun 2021 – Sept 2023",
       description: "Bengaluru, Karnataka, India",
       achievement: [
-        "Maintained and enhanced the CRM, analytics, feedback, and content management platforms using React.js.",
-        "Collaborated cross-functionally with design, product, and backend teams to deliver 20+ feature-rich dashboards.",
-        "Led frontend contributions for public-facing portals during Hyderabad and Chennai office launches, resolving critical bugs overnight.",
-        "Developed 20+ landing pages and reusable email templates to support high-conversion marketing campaigns."
+        "Led the development of a robust CRM, analytics dashboard, feedback system, and content management portal using React.js—reducing customer response time by 50%.",
+        "Collaborated cross-functionally to deliver 20+ feature-rich dashboards with dynamic data visualization and real-time insights.",
+        "Led frontend initiatives for public-facing portals during city launches (Hyderabad and Chennai), resolving critical issues under tight deadlines.",
+        "Created 20+ optimized landing pages and reusable email templates to drive marketing performance and conversion rates.",
+        "Boosted performance by 80% through lazy loading, removal of unused assets, main-thread optimizations, and PageSpeed Insight recommendations."
       ]
     },
     {
       title: "Programmer Analyst Trainee",
       id: "2",
-      subTitle: 'Quantum Phinance',
-      duration: 'Aug 2020 - May 2021',
+      subTitle: "Quantum Phinance",
+      duration: "Aug 2020 – May 2021",
       description: "Mumbai, Maharashtra, India",
       achievement: [
-        "Built core modules for NBFC loan management system including EMI calculation, compliance, and reporting automation.",
+        "Built core modules for an NBFC loan management system including EMI calculation, compliance tracking, and automated reporting workflows."
       ]
     },
     {
       title: "Frontend Developer Intern",
       id: "3",
-      subTitle: 'JamaWealth.com',
-      duration: 'Jan 2020 - Jul 2020',
+      subTitle: "JamaWealth.com",
+      duration: "Jan 2020 – Jul 2020",
       description: "Hyderabad, Telangana, India",
       achievement: [
-        "Revamped UI/UX for the wealth management dashboard, significantly improving user engagement.",
-        "Developed over 50+ responsive screens using Bootstrap and JavaScript."
+        "Revamped the UI/UX of the wealth management dashboard, significantly increasing user engagement and retention.",
+        "Developed 50+ responsive screens using Bootstrap and vanilla JavaScript, ensuring consistent performance across devices."
       ]
-    },
-  ]
+    }
+  ];
+  
   
 export const CONTACT_ME = [
     {

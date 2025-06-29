@@ -37,7 +37,7 @@ const Home = () => {
         <>
             {/* Navbar */}
             <nav className="border-black-200 dark:bg-black-900 z-10 fixed top-0 left-0 w-full bg-black">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between">
 
                     {/* Logo */}
                     <div className="flex items-center">
@@ -97,21 +97,27 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
             >
                 <AnimatedBg />
-                <div className="ml-2 sm:ml-8 md:ml-20 lg:ml-40 z-10">
-                    <motion.div className="text-2xl md:text-5xl text-white font-bold mb-4">
-                        {NAME}
-                    </motion.div>
-                    <motion.div className="text-lg md:text-3xl text-slate-400 mb-4">
-                        I'm a passionate <span className="underline decoration-4 underline-offset-8 decoration-green-700">{HOME_DESIGNATION_DATA}</span> from India
-                    </motion.div>
-                    <SocialMediaIcon />
+                <div className="z-10 w-full">
+                    <div className="max-w-screen-xl mx-auto px-4 sm:px-8">
+                        <motion.div className="text-2xl md:text-5xl text-white font-bold mb-4">
+                            {NAME}
+                        </motion.div>
+                        <motion.div className="text-lg md:text-3xl text-slate-400 mb-4">
+                            I'm a passionate{' '}
+                            <span className="underline decoration-4 underline-offset-8 decoration-green-700">
+                                {HOME_DESIGNATION_DATA}
+                            </span>{' '}
+                            from India
+                        </motion.div>
+                        <SocialMediaIcon />
+                    </div>
                 </div>
             </motion.div>
 
             {/* About */}
             <section
                 id="about"
-                className="border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
+                className="scroll-mt-24 border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
             >
                 <About />
             </section>
@@ -119,7 +125,7 @@ const Home = () => {
             {/* Resume */}
             <section
                 id="work"
-                className="border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
+                className="scroll-mt-24 border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
             >
                 <Resume />
             </section>
@@ -127,12 +133,10 @@ const Home = () => {
             {/* Contact */}
             <section
                 id="contact"
-                className="border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
+                className="scroll-mt-24 border-t border-zinc-800 bg-gradient-to-br from-black via-[#0f0f0f] to-[#071e1b] text-white"
             >
                 <Contact />
             </section>
-
-
         </>
     )
 }
