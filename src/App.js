@@ -1,14 +1,10 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
-import AppRouter from './components/appRouter/index'
+import Home from "./pages/home/index";
 
 function App() {
   return (
-    <>
-      <Router>
-        <AppRouter />
-      </Router>
-    </>
+    <div className="bg-black">
+      <Home />
+    </div>
   );
 }
 
