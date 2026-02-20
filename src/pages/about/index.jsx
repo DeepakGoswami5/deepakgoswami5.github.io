@@ -4,36 +4,51 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="section-container">
       <PageHeader data={ABOUT_PAGE} />
 
-      {/* Summary Section */}
-      <div className="text-white mt-8 sm:mt-10 mb-10 sm:mb-12">
+      {/* Summary Section with Glassmorphism */}
+      <motion.div
+        className="glass-card glass-card-hover p-6 sm:p-8 mt-8 sm:mt-10 mb-10 sm:mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <motion.p
-          className="text-xl sm:text-2xl font-semibold mb-2"
-          style={{ color: "#18d26e" }}
+          className="text-xl sm:text-2xl font-semibold mb-4 gradient-text"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           {DESIGNATION}
         </motion.p>
         <motion.p
-          className="text-sm text-gray-400 italic leading-6 sm:leading-7"
+          className="text-sm sm:text-base text-gray-300 leading-7 sm:leading-8"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
         >
           {ABOUT_SUMMARY}
         </motion.p>
-      </div>
+      </motion.div>
 
       {/* Skills Section */}
-      <div className="mt-10">
-        <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
-          What I am good at
-          <div className="w-16 sm:w-20 h-1 bg-green-500 mt-1" />
-        </h3>
+      <div className="mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">What I&apos;m Good At</h3>
+          <div className="flex items-center gap-2 mb-8">
+            <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" />
+            <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
           {SKILLS.map((skill, idx) => {
@@ -41,22 +56,39 @@ const About = () => {
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 10 }}
+                className="glass-card glass-card-hover p-5"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: "0 0 30px rgba(24, 210, 110, 0.2)",
+                }}
               >
-                <div className="flex justify-between items-center text-sm text-white mb-1">
-                  <div className="flex items-center gap-2">
-                    {Icon && <Icon className="text-green-400 text-lg" />}
-                    <span className="text-green-400 font-medium">{skill.name}</span>
+                <div className="flex justify-between items-center mb-3">
+                  <div className="flex items-center gap-3">
+                    {Icon && (
+                      <div className="p-2 glass-card rounded-lg">
+                        <Icon className="text-primary-400 text-xl" />
+                      </div>
+                    )}
+                    <span className="text-white font-semibold text-base">{skill.name}</span>
                   </div>
-                  <span className="text-gray-300">{skill.level}%</span>
+                  <span className="text-primary-400 font-bold text-sm">{skill.level}%</span>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-2.5">
-                  <div
-                    className="bg-green-500 h-2.5 rounded-full"
-                    style={{ width: `${skill.level}%` }}
-                  />
+
+                {/* Animated Progress Bar */}
+                <div className="relative w-full bg-dark-700/50 rounded-full h-2.5 overflow-hidden">
+                  <motion.div
+                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary-500 to-primary-400 rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: idx * 0.05 + 0.2, ease: "easeOut" }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
+                  </motion.div>
                 </div>
               </motion.div>
             );
@@ -65,19 +97,38 @@ const About = () => {
       </div>
 
       {/* Interests Section */}
-      <div className="mt-16 sm:mt-20">
-        <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
-          INTERESTS
-          <div className="w-20 h-1 bg-green-500 mt-1" />
-        </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+      <div className="mt-20 sm:mt-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">My Interests</h3>
+          <div className="flex items-center gap-2 mb-8">
+            <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" />
+            <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
           {INTERESTS.map((item, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ scale: 1.05 }}
-              className="text-center bg-zinc-800 text-white border border-zinc-700 rounded-lg font-medium py-4 transition duration-300"
+              className="glass-card glass-card-hover p-6 text-center group cursor-pointer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              whileHover={{
+                scale: 1.05,
+                y: -5,
+              }}
             >
-              {item}
+              <span className="text-white font-medium text-sm sm:text-base group-hover:text-primary-400 transition-colors duration-300">
+                {item}
+              </span>
+              <motion.div className="w-0 h-0.5 bg-primary-500 mx-auto mt-2 group-hover:w-full transition-all duration-300" />
             </motion.div>
           ))}
         </div>

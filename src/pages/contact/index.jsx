@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { CONTACT_PAGE } from "../../constant/data";
 import PageHeader from "../../components/pageHeader";
 import ContactCard from "../../components/contactCard";
@@ -36,47 +37,78 @@ const Contact = () => {
         ),
       ]);
       setStatus("success");
-      reset(); // ✅ Clear the form
+      reset();
+      setTimeout(() => setStatus("idle"), 3000);
     } catch (error) {
       setStatus("error");
       console.error("EmailJS error:", error);
+      setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="section-container">
       <PageHeader data={CONTACT_PAGE} />
 
-      <div className="sm:m-4 md:m-4">
+      <div className="mt-8 sm:mt-10">
         <ContactCard />
-        <div className="bg-gray-100 p-6 mt-6 rounded-lg shadow-sm dark:bg-gray-800">
+
+        {/* Enhanced Contact Form */}
+        <motion.div
+          className="glass-card p-6 sm:p-8 mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3 className="text-2xl font-bold text-white mb-2">Send me a message</h3>
+          <div className="flex items-center gap-2 mb-8">
+            <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" />
+            <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+          </div>
+
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="from_name"
-                  className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
-                >
-                  Your Name
+              {/* Name Input */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+              >
+                <label htmlFor="from_name" className="block mb-2 text-sm font-medium text-gray-300">
+                  Your Name <span className="text-primary-400">*</span>
                 </label>
                 <input
                   {...register("from_name", { required: "Name is required" })}
                   id="from_name"
                   type="text"
-                  placeholder="Enter your name"
-                  className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
+                  placeholder="John Doe"
+                  className="w-full px-4 py-3 bg-dark-800/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none"
                 />
                 {errors.from_name && (
-                  <p className="text-red-500 text-xs mt-1">{errors.from_name.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-400 text-xs mt-2 flex items-center gap-1"
+                  >
+                    <span>⚠</span> {errors.from_name.message}
+                  </motion.p>
                 )}
-              </div>
+              </motion.div>
 
-              <div>
+              {/* Email Input */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+              >
                 <label
                   htmlFor="from_email"
-                  className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-300"
                 >
-                  Your Email
+                  Your Email <span className="text-primary-400">*</span>
                 </label>
                 <input
                   {...register("from_email", {
@@ -88,70 +120,165 @@ const Contact = () => {
                   })}
                   id="from_email"
                   type="email"
-                  placeholder="Enter your email"
-                  className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
+                  placeholder="john@example.com"
+                  className="w-full px-4 py-3 bg-dark-800/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none"
                 />
                 {errors.from_email && (
-                  <p className="text-red-500 text-xs mt-1">{errors.from_email.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-400 text-xs mt-2 flex items-center gap-1"
+                  >
+                    <span>⚠</span> {errors.from_email.message}
+                  </motion.p>
                 )}
-              </div>
+              </motion.div>
             </div>
 
-            <div>
+            {/* Subject Input */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
               <label
                 htmlFor="from_subject"
-                className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-300"
               >
-                Subject
+                Subject <span className="text-primary-400">*</span>
               </label>
               <input
                 {...register("from_subject", { required: "Subject is required" })}
                 id="from_subject"
                 type="text"
-                placeholder="Subject"
-                className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
+                placeholder="How can I help you?"
+                className="w-full px-4 py-3 bg-dark-800/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none"
               />
               {errors.from_subject && (
-                <p className="text-red-500 text-xs mt-1">{errors.from_subject.message}</p>
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-xs mt-2 flex items-center gap-1"
+                >
+                  <span>⚠</span> {errors.from_subject.message}
+                </motion.p>
               )}
-            </div>
+            </motion.div>
 
-            <div>
+            {/* Message Input */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+            >
               <label
                 htmlFor="from_message"
-                className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-300"
               >
-                Message
+                Message <span className="text-primary-400">*</span>
               </label>
               <textarea
                 {...register("from_message", { required: "Message is required" })}
                 id="from_message"
-                rows={5}
-                placeholder="Type your message here..."
-                className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
+                rows={6}
+                placeholder="Tell me about your project or question..."
+                className="w-full px-4 py-3 bg-dark-800/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none resize-none"
               />
               {errors.from_message && (
-                <p className="text-red-500 text-xs mt-1">{errors.from_message.message}</p>
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-xs mt-2 flex items-center gap-1"
+                >
+                  <span>⚠</span> {errors.from_message.message}
+                </motion.p>
               )}
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <button
+            {/* Submit Button */}
+            <motion.div
+              className="flex flex-col items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
+              <motion.button
                 type="submit"
-                className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition"
+                className="btn-primary w-full sm:w-auto px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={status === "loading"}
+                whileHover={{ scale: status === "loading" ? 1 : 1.05 }}
+                whileTap={{ scale: status === "loading" ? 1 : 0.95 }}
               >
-                {status === "loading" ? "Sending..." : "Submit"}
-              </button>
+                {status === "loading" ? (
+                  <span className="flex items-center gap-2 justify-center">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  "Send Message"
+                )}
+              </motion.button>
+
+              {/* Status Messages */}
               {status === "success" && (
-                <p className="text-green-600 mt-3">Message sent successfully!</p>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="glass-card px-6 py-3 border-primary-500/50"
+                >
+                  <p className="text-primary-400 font-medium flex items-center gap-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    Message sent successfully!
+                  </p>
+                </motion.div>
               )}
               {status === "error" && (
-                <p className="text-red-600 mt-3">Something went wrong. Please try again.</p>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="glass-card px-6 py-3 border-red-500/50"
+                >
+                  <p className="text-red-400 font-medium flex items-center gap-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    Something went wrong. Please try again.
+                  </p>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
