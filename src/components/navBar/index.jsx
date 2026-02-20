@@ -53,17 +53,13 @@ const NavBar = () => {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-black-100 rounded-lg bg-black-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-black-800 md:dark:bg-black-900 dark:border-black-700">
               {TABS.map((item, ind) => (
                 <li key={item.id + ind}>
-                  <Link to={item.id}>
-                    <p
-                      onClick={() => handleTabChange(item.id)}
-                      onKeyDown={e => e.key === 'Enter' && handleTabChange(item.id)}
-                      role="button"
-                      tabIndex={0}
-                      className={`block py-2 pl-3 pr-4 text-grey text-xl hover:text-green-600 bg-black-700 rounded md:bg-transparent md:text-black-700 md:p-0 dark:text-white md:dark:text-black-500 ${currentTab === item.id ? `underline underline-offset-8 decoration-4 decoration-green-700` : ""}`}
-                      aria-current="page"
-                    >
-                      {item.title}
-                    </p>
+                  <Link
+                    to={item.id}
+                    onClick={() => handleTabChange(item.id)}
+                    className={`block py-2 pl-3 pr-4 text-grey text-xl hover:text-green-600 bg-black-700 rounded md:bg-transparent md:text-black-700 md:p-0 dark:text-white md:dark:text-black-500 ${currentTab === item.id ? `underline underline-offset-8 decoration-4 decoration-green-700` : ""}`}
+                    aria-current="page"
+                  >
+                    {item.title}
                   </Link>
                 </li>
               ))}
