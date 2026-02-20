@@ -11,7 +11,7 @@ const About = () => {
       <div className="text-white mt-8 sm:mt-10 mb-10 sm:mb-12">
         <motion.p
           className="text-xl sm:text-2xl font-semibold mb-2"
-          style={{ color: '#18d26e' }}
+          style={{ color: "#18d26e" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

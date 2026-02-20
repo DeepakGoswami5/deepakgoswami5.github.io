@@ -11,19 +11,29 @@ const TEMPLATE_ID_SELF = "template_fa68274";
 const PUBLIC_KEY = "aQQ120Ssvugts2fuL";
 
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
   const [status, setStatus] = useState("idle");
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     setStatus("loading");
 
     try {
       await Promise.all([
         emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, data, PUBLIC_KEY),
-        emailjs.send(SERVICE_ID, TEMPLATE_ID_SELF, {
-          from_name: data.from_name,
-          from_email: data.from_email,
-        }, PUBLIC_KEY)
+        emailjs.send(
+          SERVICE_ID,
+          TEMPLATE_ID_SELF,
+          {
+            from_name: data.from_name,
+            from_email: data.from_email,
+          },
+          PUBLIC_KEY
+        ),
       ]);
       setStatus("success");
       reset(); // ✅ Clear the form
@@ -43,7 +53,10 @@ const Contact = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <label htmlFor="from_name" className="block mb-1 text-sm font-medium text-gray-700 dark:text-white">
+                <label
+                  htmlFor="from_name"
+                  className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+                >
                   Your Name
                 </label>
                 <input
@@ -53,11 +66,16 @@ const Contact = () => {
                   placeholder="Enter your name"
                   className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
                 />
-                {errors.from_name && <p className="text-red-500 text-xs mt-1">{errors.from_name.message}</p>}
+                {errors.from_name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.from_name.message}</p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="from_email" className="block mb-1 text-sm font-medium text-gray-700 dark:text-white">
+                <label
+                  htmlFor="from_email"
+                  className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+                >
                   Your Email
                 </label>
                 <input
@@ -65,20 +83,25 @@ const Contact = () => {
                     required: "Email is required",
                     pattern: {
                       value: /^\S+@\S+$/i,
-                      message: "Invalid email format"
-                    }
+                      message: "Invalid email format",
+                    },
                   })}
                   id="from_email"
                   type="email"
                   placeholder="Enter your email"
                   className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
                 />
-                {errors.from_email && <p className="text-red-500 text-xs mt-1">{errors.from_email.message}</p>}
+                {errors.from_email && (
+                  <p className="text-red-500 text-xs mt-1">{errors.from_email.message}</p>
+                )}
               </div>
             </div>
 
             <div>
-              <label htmlFor="from_subject" className="block mb-1 text-sm font-medium text-gray-700 dark:text-white">
+              <label
+                htmlFor="from_subject"
+                className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+              >
                 Subject
               </label>
               <input
@@ -88,11 +111,16 @@ const Contact = () => {
                 placeholder="Subject"
                 className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
               />
-              {errors.from_subject && <p className="text-red-500 text-xs mt-1">{errors.from_subject.message}</p>}
+              {errors.from_subject && (
+                <p className="text-red-500 text-xs mt-1">{errors.from_subject.message}</p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="from_message" className="block mb-1 text-sm font-medium text-gray-700 dark:text-white">
+              <label
+                htmlFor="from_message"
+                className="block mb-1 text-sm font-medium text-gray-700 dark:text-white"
+              >
                 Message
               </label>
               <textarea
@@ -102,7 +130,9 @@ const Contact = () => {
                 placeholder="Type your message here..."
                 className="w-full p-2.5 border rounded-md text-sm text-gray-900 dark:text-black"
               />
-              {errors.from_message && <p className="text-red-500 text-xs mt-1">{errors.from_message.message}</p>}
+              {errors.from_message && (
+                <p className="text-red-500 text-xs mt-1">{errors.from_message.message}</p>
+              )}
             </div>
 
             <div className="text-center">
