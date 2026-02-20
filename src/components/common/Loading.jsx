@@ -12,7 +12,7 @@ const Loading = React.memo(
     const SpinnerLoader = () => (
       <div
         className={`animate-spin rounded-full border-2 border-gray-300 border-t-blue-600 ${sizeClasses[size]}`}
-       />
+      />
     );
 
     const DotsLoader = () => (
@@ -24,7 +24,7 @@ const Loading = React.memo(
               size === "small" ? "h-2 w-2" : size === "large" ? "h-4 w-4" : "h-3 w-3"
             }`}
             style={{ animationDelay: `${i * 0.2}s` }}
-           />
+          />
         ))}
       </div>
     );

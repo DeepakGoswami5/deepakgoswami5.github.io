@@ -31,10 +31,13 @@ const Home = () => {
     }
   }, []);
 
-  const handleTabClick = useCallback((e) => {
-    const tabId = e.currentTarget.dataset.tabId;
-    handleTabChange(tabId);
-  }, [handleTabChange]);
+  const handleTabClick = useCallback(
+    e => {
+      const tabId = e.currentTarget.dataset.tabId;
+      handleTabChange(tabId);
+    },
+    [handleTabChange]
+  );
 
   const handleNavbarToggle = useCallback(() => setIsNavBar(!isNavBar), [isNavBar]);
 

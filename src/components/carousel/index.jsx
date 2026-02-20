@@ -46,35 +46,35 @@ const Carousel = () => {
             aria-current="true"
             aria-label="Slide 1"
             data-carousel-slide-to="0"
-           />
+          />
           <button
             type="button"
             className="w-3 h-3 rounded-full"
             aria-current="false"
             aria-label="Slide 2"
             data-carousel-slide-to="1"
-           />
+          />
           <button
             type="button"
             className="w-3 h-3 rounded-full"
             aria-current="false"
             aria-label="Slide 3"
             data-carousel-slide-to="2"
-           />
+          />
           <button
             type="button"
             className="w-3 h-3 rounded-full"
             aria-current="false"
             aria-label="Slide 4"
             data-carousel-slide-to="3"
-           />
+          />
           <button
             type="button"
             className="w-3 h-3 rounded-full"
             aria-current="false"
             aria-label="Slide 5"
             data-carousel-slide-to="4"
-           />
+          />
         </div>
         <button
           type="button"
